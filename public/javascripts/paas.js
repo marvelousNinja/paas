@@ -5,9 +5,7 @@ paas.controller('PController', function($scope, $state, $timeout) {
     $state.transitionTo('targeting');
 
     $timeout(function() {
-      $state.transitionTo('completed', {
-        target: target
-      });
+      $state.transitionTo('completed');
     }, 5000);
   }
 
