@@ -10,6 +10,10 @@ paas.controller('PController', function($scope, $state, $timeout) {
       });
     }, 5000);
   }
+
+  $scope.toTheForm = function() {
+    $state.transitionTo('form');
+  }
 });
 
 paas.config(function($stateProvider) {
