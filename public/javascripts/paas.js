@@ -2,15 +2,15 @@ var paas = angular.module('PaaS', ['ui.router']);
 
 paas.controller('PController', function($scope, $state, $timeout) {
   $scope.sendBestRegards = function(target) {
-    $state.transitionTo('targeting');
-
-    $timeout(function() {
-      $state.transitionTo('completed');
-    }, 5000);
+    $state.go('targeting').then(function() {
+      $timeout(function() {
+        $state.go('completed');
+      }, 5000);
+    });
   }
 
   $scope.toTheForm = function() {
-    $state.transitionTo('form');
+    $state.go('form');
   }
 });
 
