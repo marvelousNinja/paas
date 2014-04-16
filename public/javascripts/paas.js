@@ -1,16 +1,12 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
-paas.controller('PController', function($scope, $state, $timeout) {
+paas.controller('PController', function($scope, $state, $timeout, $stateParams) {
   $scope.sendBestRegards = function(target) {
-    $state.go('targeting').then(function() {
+    $state.go('targeting', {target: target}).then(function() {
       $timeout(function() {
         $state.go('completed');
       }, 5000);
     });
-  }
-
-  $scope.toTheForm = function() {
-    $state.go('form');
   }
 });
 
@@ -18,17 +14,29 @@ paas.config(function($stateProvider) {
   $stateProvider
     .state('form', {
       url: '',
-      templateUrl: '/templates/form.html',
-      controller: 'PController'
+      views: {
+        main: {
+          templateUrl: '/templates/form.html',
+          controller: 'PController'
+        }
+      }
     })
     .state('targeting', {
-      url: 'targeting',
-      templateUrl: '/templates/targeting.html',
-      controller: 'PController'
+      url: 'targeting/:target',
+      views: {
+        main: {
+          templateUrl: '/templates/targeting.html',
+          controller: 'PController'
+        }
+      }
     })
     .state('completed', {
       url: 'completed',
-      templateUrl: '/templates/completed.html',
-      controller: 'PController'
+      views: {
+        main: {
+          templateUrl: '/templates/completed.html',
+          controller: 'PController'
+        }
+      }
     })
 });
