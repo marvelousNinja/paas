@@ -40,3 +40,16 @@ paas.config(function($stateProvider) {
       }
     })
 });
+
+//  => You're on a home page =>  You Enter the link => System parses the link and tries to acquire a target =>
+//  => It prints suggestable target => You click on the button and the process starts =>
+//  => You see some kind of loading screen => Then you see completion message with link to go back =>
+//  => You're on a home page
+//                  |------------------|
+//                  | Targeting widget |
+//                  |------------------|
+//        /------/       /------/                /---------/          /--------------------/
+//  =>   / Form /  ===> / Form / ============>  / Spinner / =======> / Completion Message / =====\\
+// ||   /------/       /------/                /---------/          /--------------------/        ||
+// ||                                                                                            //
+// \\ ===========================================================================================
