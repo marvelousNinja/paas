@@ -1,13 +1,15 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
 paas.controller('PController', function($scope, $state, $timeout, $stateParams) {
-  $scope.sendBestRegards = function(target) {
-    $state.go('targeting', {target: target}).then(function() {
-      $timeout(function() {
-        $state.go('completed');
-      }, 5000);
-    });
-  }
+  $scope.$on('$viewContentLoaded', function(e, state) {
+    $scope.target = $stateParams.target;
+  });
+});
+
+paas.controller('TargetingController', function($scope, $state, $timeout, $stateParams) {
+  $scope.$on('$viewContentLoaded', function(e, state) {
+    // some stuff here to load the target image
+  });
 });
 
 paas.config(function($stateProvider) {
@@ -25,8 +27,12 @@ paas.config(function($stateProvider) {
       url: 'targeting/:target',
       views: {
         main: {
-          templateUrl: '/templates/targeting.html',
+          templateUrl: '/templates/form.html',
           controller: 'PController'
+        },
+        header: {
+          templateUrl: '/templates/targeting.html',
+          controller: 'TargetingController'
         }
       }
     })

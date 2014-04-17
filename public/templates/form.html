@@ -1,5 +1,5 @@
 <h1>Ввалить пиздюлей</h1>
-<form novalidate ng-submit="sendBestRegards(target)">
+<form novalidate>
   <input type="text" ng-model="target"/>
-  <button>Впиздюлить</button>
+  <button ui-sref='targeting({ target: target })'>Впиздюлить</button>
 </form>

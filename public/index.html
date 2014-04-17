@@ -1,7 +1,9 @@
 <!doctype html>
 <html ng-app='PaaS'>
   <body>
+    <section ui-view='header'></section>
     <section ui-view='main'></section>
+    <section ui-view='footer'></section>
     <script src='/javascripts/angular.js'></script>
     <script src='/javascripts/angular-ui-router.js'></script>
     <script src='/javascripts/paas.js'></script>
