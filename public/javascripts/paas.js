@@ -1,11 +1,19 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
-paas.controller('FormController', function($scope, $state, target) {
+paas.controller('FormController', function($scope, target) {
   $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
   $scope.$watch('target', function(t) { target.value = t });
 });
 
-paas.controller('TargetingController', function($scope, $state, $timeout, target) {
+paas.controller('TargetingController', function($scope, target) {
+  $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
+});
+
+paas.controller('ProgressController', function($scope, $state, $timeout, target) {
+  $timeout(function() { $state.go('completed') }, 2000);
+});
+
+paas.controller('CompletedController', function($scope, target) {
   $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
 });
 
@@ -35,12 +43,21 @@ paas.config(function($stateProvider) {
         }
       }
     })
+    .state('progress', {
+      url: 'progress',
+      views: {
+        main: {
+          templateUrl: '/templates/progress.html',
+          controller: 'ProgressController'
+        }
+      }
+    })
     .state('completed', {
       url: 'completed',
       views: {
         main: {
           templateUrl: '/templates/completed.html',
-          controller: 'PController'
+          controller: 'CompletedController'
         }
       }
     })
