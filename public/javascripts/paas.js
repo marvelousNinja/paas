@@ -1,7 +1,10 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
-paas.controller('FormController', function($scope, target) {
-  $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
+paas.controller('FormController', function($scope, $state,target) {
+  $scope.$watch(function() { return target.value }, function(t) {
+    $scope.target = t;
+    t ? $state.go('targeting') : $state.go('form');
+  });
   $scope.$watch('target', function(t) { target.value = t });
 });
 
@@ -9,7 +12,7 @@ paas.controller('TargetingController', function($scope, target) {
   $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
 });
 
-paas.controller('ProgressController', function($scope, $state, $timeout, target) {
+paas.controller('ProgressController', function($scope, $state, $timeout) {
   $timeout(function() { $state.go('completed') }, 2000);
 });
 
