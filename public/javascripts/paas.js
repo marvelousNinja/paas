@@ -1,16 +1,17 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
-paas.controller('PController', function($scope, $state, $timeout, $stateParams) {
+paas.controller('FormController', function($scope, $state, $timeout, $stateParams, target) {
+  $scope.$on('$viewContentLoaded', function() { $scope.target = target.value });
+  $scope.$watch('target', function(t) { target.value = t });
+});
+
+paas.controller('TargetingController', function($scope, $state, $timeout, $stateParams, target) {
   $scope.$on('$viewContentLoaded', function(e, state) {
-    $scope.target = $stateParams.target;
+    $scope.target = target.value;
   });
 });
 
-paas.controller('TargetingController', function($scope, $state, $timeout, $stateParams) {
-  $scope.$on('$viewContentLoaded', function(e, state) {
-    // some stuff here to load the target image
-  });
-});
+paas.value('target', { value: '' });
 
 paas.config(function($stateProvider) {
   $stateProvider
@@ -19,16 +20,16 @@ paas.config(function($stateProvider) {
       views: {
         main: {
           templateUrl: '/templates/form.html',
-          controller: 'PController'
+          controller: 'FormController'
         }
       }
     })
     .state('targeting', {
-      url: 'targeting/:target',
+      url: 'targeting',
       views: {
         main: {
           templateUrl: '/templates/form.html',
-          controller: 'PController'
+          controller: 'FormController'
         },
         header: {
           templateUrl: '/templates/targeting.html',
