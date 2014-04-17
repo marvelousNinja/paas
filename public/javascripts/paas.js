@@ -1,14 +1,12 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
-paas.controller('FormController', function($scope, $state, $timeout, $stateParams, target) {
-  $scope.$on('$viewContentLoaded', function() { $scope.target = target.value });
+paas.controller('FormController', function($scope, $state, target) {
+  $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
   $scope.$watch('target', function(t) { target.value = t });
 });
 
-paas.controller('TargetingController', function($scope, $state, $timeout, $stateParams, target) {
-  $scope.$on('$viewContentLoaded', function(e, state) {
-    $scope.target = target.value;
-  });
+paas.controller('TargetingController', function($scope, $state, $timeout, target) {
+  $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
 });
 
 paas.value('target', { value: '' });
