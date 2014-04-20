@@ -20,6 +20,10 @@ paas.controller('CompletedController', function($scope, target) {
   $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
 });
 
+paas.controller('QuoteController', function() {
+
+});
+
 paas.value('target', { value: '' });
 
 paas.config(function($stateProvider) {
@@ -30,6 +34,10 @@ paas.config(function($stateProvider) {
         main: {
           templateUrl: '/templates/form.html',
           controller: 'FormController'
+        },
+        aside: {
+          templateUrl: '/templates/quote.html',
+          controller: 'QuoteController'
         }
       }
     })
@@ -39,6 +47,10 @@ paas.config(function($stateProvider) {
         main: {
           templateUrl: '/templates/form.html',
           controller: 'FormController'
+        },
+        aside: {
+          templateUrl: '/templates/quote.html',
+          controller: 'QuoteController'
         },
         header: {
           templateUrl: '/templates/targeting.html',
