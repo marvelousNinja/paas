@@ -32,6 +32,9 @@ paas.config(function($stateProvider) {
     .state('form', {
       url: '',
       views: {
+        header: {
+          templateUrl: '/templates/header.html'
+        },
         main: {
           templateUrl: '/templates/form.html',
           controller: 'FormController'
