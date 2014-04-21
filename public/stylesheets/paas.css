@@ -1,0 +1,9 @@
+button[disabled],.button[disabled] {
+    background:#ccc;
+    border-color: #ccc;
+    text-shadow:none;
+}
+
+button {
+  margin-top: 0px;
+}
