@@ -20,10 +20,6 @@ paas.controller('CompletedController', function($scope, target) {
   $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
 });
 
-paas.controller('QuoteController', function() {
-
-});
-
 paas.value('target', { 
   value: '', 
   reset: function() {
@@ -41,8 +37,10 @@ paas.config(function($stateProvider) {
           controller: 'FormController'
         },
         aside: {
-          templateUrl: '/templates/quote.html',
-          controller: 'QuoteController'
+          templateUrl: '/templates/quote.html'
+        },
+        footer: {
+          templateUrl: '/templates/footer.html'
         }
       },
       onEnter: function(target) { 
@@ -58,11 +56,13 @@ paas.config(function($stateProvider) {
         },
         aside: {
           templateUrl: '/templates/quote.html',
-          controller: 'QuoteController'
         },
         header: {
           templateUrl: '/templates/targeting.html',
           controller: 'TargetingController'
+        },
+        footer: {
+          templateUrl: '/templates/footer.html'
         }
       }
     })
@@ -72,6 +72,9 @@ paas.config(function($stateProvider) {
         main: {
           templateUrl: '/templates/progress.html',
           controller: 'ProgressController'
+        },
+        footer: {
+          templateUrl: '/templates/footer.html'
         }
       }
     })
@@ -81,6 +84,9 @@ paas.config(function($stateProvider) {
         main: {
           templateUrl: '/templates/completed.html',
           controller: 'CompletedController'
+        },
+        footer: {
+          templateUrl: '/templates/footer.html'
         }
       }
     })
