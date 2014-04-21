@@ -24,7 +24,12 @@ paas.controller('QuoteController', function() {
 
 });
 
-paas.value('target', { value: '' });
+paas.value('target', { 
+  value: '', 
+  reset: function() {
+    this.value = '';
+  }
+});
 
 paas.config(function($stateProvider) {
   $stateProvider
@@ -39,6 +44,9 @@ paas.config(function($stateProvider) {
           templateUrl: '/templates/quote.html',
           controller: 'QuoteController'
         }
+      },
+      onEnter: function(target) { 
+        target.reset(); 
       }
     })
     .state('targeting', {
