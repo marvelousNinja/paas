@@ -4,9 +4,25 @@
            type='text'
            ng-model-options='{ debounce: 500 }'
            ng-model='target' />
-      <button ng-disabled='!target' ui-sref='progress'>
-        <img style='height: 1em;' src='/images/fist.png'/>
-        Ввалить
-      </button>
+    <button ng-disabled='!target' ui-sref='progress'>
+      <img style='height: 1em;' src='/images/fist.png'/>
+      Ввалить
+    </button>
+    <label>
+      <input type='radio' ng-model='social' value='vk'/>
+      <img src="images/vk.png">
+    </label>
+    <label>
+      <input type='radio' ng-model='social' value='fb'/>
+      <img src='images/fb.png'>
+    </label>
+    <label>
+      <input type='radio' ng-model='social' value='tw'/>
+      <img src='images/tw.png'>
+    </label>
+    <label>
+      <input type='radio' ng-model='social' value='gp'/>
+      <img src="icons/gp.png">
+    </label>
   </fieldset>
 </form>

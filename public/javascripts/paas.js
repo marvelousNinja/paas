@@ -1,11 +1,16 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
-paas.controller('FormController', function($scope, $state,target) {
-  $scope.$watch(function() { return target.value }, function(t) {
-    $scope.target = t;
-    t ? $state.go('targeting') : $state.go('form');
+paas.controller('FormController', function($scope, $state, target) {
+  window.target = target;
+
+  $scope.$watch(function() { return target }, function(t) {
+    $scope.target = t.value;
+    $scope.social = t.social;
+
+    t.value ? $state.go('targeting') : $state.go('form');
   });
   $scope.$watch('target', function(t) { target.value = t });
+  $scope.$watch('social', function(s) { target.social = s });
 });
 
 paas.controller('TargetingController', function($scope, target) {
@@ -21,9 +26,11 @@ paas.controller('CompletedController', function($scope, target) {
 });
 
 paas.value('target', { 
-  value: '', 
+  value: '',
+  social: 'vk', 
   reset: function() {
     this.value = '';
+    this.social = '';
   }
 });
 
