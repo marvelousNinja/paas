@@ -1,9 +1,13 @@
 button[disabled],.button[disabled] {
-    background:#ccc;
+    background: #ccc;
     border-color: #ccc;
-    text-shadow:none;
+    text-shadow: none;
 }
 
-button {
-  margin-top: 0px;
+input.columns {
+  margin-top: 3px;
+}
+
+body.container {
+  margin-top: 10%;
 }
