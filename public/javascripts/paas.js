@@ -1,8 +1,6 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
 paas.controller('FormController', function($scope, $state, target) {
-  window.target = target;
-
   $scope.$watch(function() { return target }, function(t) {
     $scope.target = t.value;
     $scope.social = t.social;
