@@ -1,5 +1,6 @@
 var paas = angular.module('PaaS', ['ui.router']);
 
+// TODO: Get rid of repeating myself: these bindings need to be refactored somehow
 paas.controller('FormController', function($scope, $state, target) {
   $scope.$watch(function() { return target }, function(t) {
     $scope.target = t.value;
@@ -23,6 +24,7 @@ paas.controller('CompletedController', function($scope, target) {
   $scope.$watch(function() { return target.value }, function(t) { $scope.target = t });
 });
 
+// TODO: Perhaps we need different kind of service here?
 paas.value('target', { 
   value: '',
   social: '', 
@@ -32,6 +34,8 @@ paas.value('target', {
   }
 });
 
+// TODO: These states should not be 'connected' anyhow.
+// However, we can possibly remove duplication by making them nested.
 paas.config(function($stateProvider) {
   $stateProvider
     .state('form', {
